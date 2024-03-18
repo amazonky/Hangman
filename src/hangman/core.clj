@@ -37,7 +37,7 @@
 (defn get-guess []
   (loop [guess (clojure.string/trim (read-line))]
     (if (and (= (count guess) 1) (Character/isLetter (int (first guess))))
-      guess
+       guess
       (do (println "Invalid input! Please enter a single letter.")
           (recur (clojure.string/trim (read-line)))))))
 
@@ -52,7 +52,7 @@
            count-of-guesses 0]
       (println (str "Current word: " (get-current-word correct-word guessed-letters)))
       (if (word-complete? (get-current-word correct-word guessed-letters))
-        ;; game won
+        ;; game   won
         (do (println "Congratulations! You guessed the word!")
             (save-new-game user-name count-of-guesses correct-word)
             ((fn menu []
@@ -70,7 +70,7 @@
                                           (System/exit 0))
                    :else (do (println "Wrong input")
                              (recur)))))))
-        ;; continue game
+        ;; continue   game
         (do
           (println (str "Missed letters: " (str/join ", " (sort missed-letters))))
           (println (str "Number of guesses: " count-of-guesses))
@@ -78,7 +78,7 @@
           (flush)
           (let [guess (get-guess)]
             (if (or (contains? guessed-letters guess) (contains? missed-letters guess))
-              ;; Letter already guessed
+              ;; Letter already  guessed
               (do (println "You already guessed that letter. Try again.")
                   (println)
                   (recur guessed-letters missed-letters count-of-guesses))
